@@ -39,7 +39,7 @@ async function main() {
     await mongoose.connect(mongo_url);
     console.log("✅ DB Connected");
 
-    app.listen(3000, () => {
+    app.listen(process.env.PORT || 4000, () => {
       console.log("🚀 Server running on port 3000");
     });
 
