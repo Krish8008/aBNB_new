@@ -1,0 +1,56 @@
+<% layout("layoutes/boilerplate") %>
+
+<div class="edit-container">
+
+    <h2>Edit Listing</h2>
+
+    <form action="/listings/<%= listing._id %>?_method=PUT" 
+          method="POST" 
+          enctype="multipart/form-data"
+          class="edit-form">
+
+        <div class="form-grid">
+
+            <!-- LEFT COLUMN -->
+            <div class="form-left">
+
+                <label>Title</label>
+                <input type="text" name="listing[title]" 
+                       value="<%= listing.title %>">
+
+                <label>Description</label>
+                <textarea name="listing[description]"><%= listing.description %></textarea>
+
+                <label>Price</label>
+                <input type="number" name="listing[price]" 
+                       value="<%= listing.price %>">
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="form-right">
+
+                <label>Location</label>
+                <input type="text" name="listing[location]" 
+                       value="<%= listing.location %>">
+
+                <label>Country</label>
+                <input type="text" name="listing[country]" 
+                       value="<%= listing.country %>">
+
+                <label>Current Image</label>
+                <img src="<%= listing.image.url %>" class="preview-img">
+
+                <label>Upload New Image</label>
+                <input type="file" name="image">
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <button class="update-btn">Update Listing</button>
+
+    </form>
+
+</div>

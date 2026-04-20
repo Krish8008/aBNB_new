@@ -1,0 +1,43 @@
+<nav class="navbar">
+
+    <!-- Left -->
+    <div class="nav-left">
+        <div class="logo">aBNB</div>
+    </div>
+
+    <!-- Center -->
+    <div class="nav-center">
+        <form action="/listings" method="GET" class="search-bar">
+            <input 
+                type="text" 
+                name="search"
+                placeholder="Where to? Search by location"
+                value="<%= search || '' %>"
+            >
+            <button type="submit">🔍</button>
+        </form>
+    </div>
+
+    <!-- Right -->
+    <div class="nav-right">
+        <a href="/">Home</a>
+        <a href="/listings/new">Create Listing</a>
+
+        <% if (currentUser) { %>
+            <div class="profile-menu">
+                <div class="profile-icon" onclick="toggleMenu()">👤</div>
+
+                <div id="dropdownMenu" class="dropdown hidden">
+                    <p><strong><%= currentUser.username %></strong></p>
+                    <p><%= currentUser.email %></p>
+                    <hr>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/signup" class="signup-btn">Signup</a>
+        <% } %>
+    </div>
+
+</nav>

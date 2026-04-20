@@ -1,0 +1,44 @@
+<% layout("layoutes/boilerplate") %>
+
+<div class="form-container">
+
+    <h2>Add New Listing</h2>
+
+    <form action="/listings" method="POST" enctype="multipart/form-data" class="listing-form">
+
+        <div class="form-grid">
+
+            <!-- LEFT -->
+            <div class="form-left">
+                <label>Title</label>
+                <input type="text" name="listing[title]" required>
+
+                <label>Description</label>
+                <textarea name="listing[description]" required></textarea>
+
+                <label>Price</label>
+                <input type="number" name="listing[price]" required>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="form-right">
+                <label>Location</label>
+                <input type="text" name="listing[location]" required>
+
+                <label>Country</label>
+                <input type="text" name="listing[country]" required>
+
+                <label>Upload Image</label>
+                <input type="file" name="image" id="imageInput">
+
+                <!-- Image Preview -->
+                <img id="preview" class="preview-img hidden">
+            </div>
+
+        </div>
+
+        <button class="submit-btn">Add Listing</button>
+
+    </form>
+
+</div>

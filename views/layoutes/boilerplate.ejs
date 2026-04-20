@@ -1,0 +1,71 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aBNB</title>
+    
+</head>
+<body>
+   
+        
+    
+    
+   
+
+   
+     <footer class="footer">
+        <p>© 2026 aBNB. All rights reserved.</p>
+
+        <div class="footer-links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+    
+    
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<body>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Navbar -->
+    <%- include("../partials/navbar") %> 
+
+    <!-- Flash Messages -->
+    <% if (error && error.length > 0) { %>
+        <div class="flash-error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if (success && success.length > 0) { %>
+        <div class="flash-success">
+            <%= success %>
+        </div>
+    <% } %>
+
+    <!-- Main Content -->
+    <main>
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <%- include("../partials/footer") %> 
+    </footer>
+
+    <script src="/script.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>

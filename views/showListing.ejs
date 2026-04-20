@@ -1,0 +1,82 @@
+<% layout("layoutes/boilerplate") %>
+
+<div class="detail-container">
+
+    <!-- LEFT: IMAGE -->
+    <div class="left">
+        <img src="<%= listing.image.url %>" class="detail-img">
+    </div>
+
+    <!-- RIGHT: DETAILS -->
+    <div class="right">
+        <h2><%= listing.title %></h2>
+
+        <p class="location">
+            <%= listing.location %>, <%= listing.country %>
+        </p>
+
+        <p class="price">₹ <%= listing.price %> / night</p>
+
+        <p class="description">
+            <%= listing.description %>
+        </p>
+
+        <div class="actions">
+            <a href="/listings" class="btn">Back</a>
+            <a href="/listings/<%= listing._id %>/edit" class="btn">Edit</a>
+
+            <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                <button class="btn delete">Delete</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<hr>
+
+<!-- BELOW SECTION -->
+<div class="bottom-section">
+
+    <!-- Reviews -->
+    <div class="reviews">
+        <h3>Reviews</h3>
+
+        <% if(listing.reviews.length === 0){ %>
+            <p>No reviews yet...</p>
+        <% } else { %>
+            <% for (let review of listing.reviews) { %>
+                <div class="review-card">
+                    <p>⭐ <%= review.rating %> / 5</p>
+                    <p><%= review.comment %></p>
+                    <small><%= review.createdAt.toDateString() %></small>
+
+                    <form action="/review/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                        <button class="delete-review">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+
+    <!-- Review Form -->
+    <% if(currentUser) { %>
+    <div class="review-form">
+        <h3>Add Review</h3>
+
+        <form action="/review/<%= listing._id %>/reviews" method="POST">
+            <label>Rating</label>
+            <input type="range" name="review[rating]" min="1" max="5">
+
+            <label>Your Experience</label>
+            <textarea name="review[comment]" required></textarea>
+
+            <button class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <% } %>
+
+</div>
+
+<!-- Map -->
+<div id="map"></div>

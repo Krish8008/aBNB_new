@@ -1,0 +1,39 @@
+<% layout("layoutes/boilerplate") %>
+
+<div class="listings-container">
+    <% for(let listing of listings){ %>
+
+        <div class="listing-card">
+
+            <a href="/listings/<%= listing._id %>" class="card-link">
+                <img src="<%= listing.image.url %>" class="listing-img">
+            </a>
+
+            <div class="listing-info">
+                <h3>
+                    <%= listing.title.length > 25 
+                        ? listing.title.slice(0,25) + "..." 
+                        : listing.title %>
+                </h3>
+
+                <p class="location">
+                    <%= listing.location %>, <%= listing.country %>
+                </p>
+
+                <p class="price">₹ <%= listing.price %> / night</p>
+
+                <div class="actions">
+                    <a href="/listings/<%= listing._id %>/edit" class="edit-btn">
+                        Edit
+                    </a>
+
+                    <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+                        <button class="delete-btn">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    <% } %>
+</div>
